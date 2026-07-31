@@ -36,5 +36,5 @@ name: Deploy to GitHub Pages
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_dir: ./dist
-            cname: 'agenthouse.fun'
+            cname: agenthouse.fun
     
