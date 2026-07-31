@@ -1,0 +1,16 @@
+{
+  "name": "AGENTHOUSE",
+  "short_name": "AGENTHOUSE",
+  "description": "Lighthouse for AI Agents. Audit, score, and optimize your agent runs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
