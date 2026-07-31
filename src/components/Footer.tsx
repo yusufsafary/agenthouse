@@ -5,6 +5,7 @@ import { Github, Twitter, ArrowUpRight } from 'lucide-react'
 const LINKS = {
   product: [
     { label: 'How It Works', href: '/how-to' },
+    { label: 'Pricing', href: '/pricing' },
     { label: 'Dashboard', href: '/dashboard' },
     { label: 'Open Source', href: 'https://github.com/yusufsafary/agenthouse', external: true },
   ],
@@ -13,6 +14,8 @@ const LINKS = {
     { label: 'GitHub', href: 'https://github.com/yusufsafary', external: true },
   ],
   legal: [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
     { label: 'Cookie Policy', href: '/cookies' },
   ],
 }
@@ -58,14 +61,9 @@ export default function Footer() {
               {LINKS.product.map(l => (
                 <li key={l.href}>
                   {l.external ? (
-                    <a
-                      href={l.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-fog hover:text-white transition-colors"
-                    >
-                      {l.label}
-                      <ArrowUpRight size={12} />
+                    <a href={l.href} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-sm text-fog hover:text-white transition-colors">
+                      {l.label}<ArrowUpRight size={12} />
                     </a>
                   ) : (
                     <Link to={l.href} className="text-sm text-fog hover:text-white transition-colors">
@@ -83,14 +81,9 @@ export default function Footer() {
               {LINKS.company.map(l => (
                 <li key={l.href}>
                   {l.external ? (
-                    <a
-                      href={l.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-fog hover:text-white transition-colors"
-                    >
-                      {l.label}
-                      <ArrowUpRight size={12} />
+                    <a href={l.href} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-sm text-fog hover:text-white transition-colors">
+                      {l.label}<ArrowUpRight size={12} />
                     </a>
                   ) : (
                     <Link to={l.href} className="text-sm text-fog hover:text-white transition-colors">
@@ -116,29 +109,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-steel flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-fog">
+        <div className="mt-12 pt-6 border-t border-steel">
+          <p className="text-xs text-fog text-center sm:text-left">
             {year} AGENTHOUSE. MIT License. Based on{' '}
-            <a
-              href="https://github.com/addyosmani/agent-house"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-acid hover:underline"
-            >
-              agent-house
-            </a>{' '}
-            by Addy Osmani.
-          </p>
-          <p className="text-xs text-fog">
-            Built by{' '}
-            <a
-              href="https://github.com/yusufsafary"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-acid hover:underline"
-            >
-              yusufsafary
-            </a>
+            <a href="https://github.com/addyosmani/agent-house" target="_blank" rel="noopener noreferrer"
+              className="text-acid hover:underline">agent-house</a>{' '}by Addy Osmani.
           </p>
         </div>
       </div>
