@@ -233,11 +233,11 @@ export default function HowTo() {
         {/* CTA */}
         <div className="mt-20 pt-12 border-t border-steel">
           <div className="flex flex-col sm:flex-row gap-4 items-start">
-            <Link to="/agenthouse/login" className="btn-acid">
+            <Link to="/login" className="btn-acid">
               Start Auditing
               <ArrowRight size={14} />
             </Link>
-            <Link to="/agenthouse/about" className="btn-outline">
+            <Link to="/about" className="btn-outline">
               About the Project
               <ArrowRight size={14} />
             </Link>

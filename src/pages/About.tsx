@@ -139,7 +139,7 @@ export default function About() {
         {/* CTA */}
         <div className="mt-20 pt-12 border-t border-steel">
           <div className="flex flex-col sm:flex-row gap-4 items-start">
-            <Link to="/agenthouse/login" className="btn-acid">
+            <Link to="/login" className="btn-acid">
               Try AGENTHOUSE
               <ArrowRight size={14} />
             </Link>

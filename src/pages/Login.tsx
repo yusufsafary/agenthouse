@@ -25,7 +25,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (isAuthenticated) navigate('/agenthouse/dashboard', { replace: true })
+    if (isAuthenticated) navigate('/dashboard', { replace: true })
   }, [isAuthenticated, navigate])
 
   const handleEmail = async (e: React.FormEvent) => {
@@ -229,7 +229,7 @@ export default function Login() {
 
           <p className="text-center mt-4 text-xs text-fog">
             By signing in you agree to our{' '}
-            <Link to="/agenthouse/cookies" className="text-acid hover:underline">Cookie Policy</Link>.
+            <Link to="/cookies" className="text-acid hover:underline">Cookie Policy</Link>.
           </p>
         </motion.div>
       </div>

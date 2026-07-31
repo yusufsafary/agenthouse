@@ -106,7 +106,7 @@ export default function Cookies() {
               This policy covers{' '}
               <span className="text-acid">yusufsafary.github.io/agenthouse</span> only.
             </p>
-            <Link to="/agenthouse/" className="btn-outline">
+            <Link to="" className="btn-outline">
               Back to Home
             </Link>
           </div>

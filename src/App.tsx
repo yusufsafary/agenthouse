@@ -11,7 +11,7 @@ import Dashboard from './pages/Dashboard'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth()
-  if (!isAuthenticated) return <Navigate to="/agenthouse/login" replace />
+  if (!isAuthenticated) return <Navigate to="/login" replace />
   return <>{children}</>
 }
 
@@ -21,20 +21,20 @@ function AppRoutes() {
       <div className="noise-overlay" />
       <Navbar />
       <Routes>
-        <Route path="/agenthouse/" element={<Home />} />
-        <Route path="/agenthouse/about" element={<About />} />
-        <Route path="/agenthouse/how-to" element={<HowTo />} />
-        <Route path="/agenthouse/cookies" element={<Cookies />} />
-        <Route path="/agenthouse/login" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/how-to" element={<HowTo />} />
+        <Route path="/cookies" element={<Cookies />} />
+        <Route path="/login" element={<Login />} />
         <Route
-          path="/agenthouse/dashboard"
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/agenthouse/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
     </>

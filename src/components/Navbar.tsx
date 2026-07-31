@@ -6,9 +6,9 @@ import Logo from './Logo'
 import { useAuth } from '../hooks/useAuth'
 
 const NAV_LINKS = [
-  { href: '/agenthouse/', label: 'Home' },
-  { href: '/agenthouse/about', label: 'About' },
-  { href: '/agenthouse/how-to', label: 'How To' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/how-to', label: 'How To' },
 ]
 
 export default function Navbar() {
@@ -19,12 +19,12 @@ export default function Navbar() {
 
   const handleLogout = () => {
     logout()
-    navigate('/agenthouse/')
+    navigate('/')
     setOpen(false)
   }
 
   const isActive = (href: string) => {
-    if (href === '/agenthouse/') return location.pathname === '/agenthouse/' || location.pathname === '/agenthouse'
+    if (href === '/') return location.pathname === '/' || location.pathname === '/agenthouse'
     return location.pathname.startsWith(href)
   }
 
@@ -32,7 +32,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-ink/95 backdrop-blur-sm border-b border-steel">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/agenthouse/" onClick={() => setOpen(false)}>
+          <Link to="/" onClick={() => setOpen(false)}>
             <Logo size="sm" />
           </Link>
 
@@ -58,7 +58,7 @@ export default function Navbar() {
             {isAuthenticated ? (
               <>
                 <Link
-                  to="/agenthouse/dashboard"
+                  to="/dashboard"
                   className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-widest text-mist hover:text-acid transition-colors"
                 >
                   <LayoutDashboard size={14} />
@@ -76,7 +76,7 @@ export default function Navbar() {
               </>
             ) : (
               <Link
-                to="/agenthouse/login"
+                to="/login"
                 className="btn-acid text-xs py-2 px-5"
               >
                 Launch App
@@ -122,7 +122,7 @@ export default function Navbar() {
                 {isAuthenticated ? (
                   <>
                     <Link
-                      to="/agenthouse/dashboard"
+                      to="/dashboard"
                       onClick={() => setOpen(false)}
                       className="block px-4 py-3 text-sm font-bold uppercase tracking-widest text-acid"
                     >
@@ -137,7 +137,7 @@ export default function Navbar() {
                   </>
                 ) : (
                   <Link
-                    to="/agenthouse/login"
+                    to="/login"
                     onClick={() => setOpen(false)}
                     className="block px-4 py-3 text-sm font-bold uppercase tracking-widest text-acid"
                   >

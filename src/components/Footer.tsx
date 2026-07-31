@@ -4,16 +4,16 @@ import { Github, Twitter, ArrowUpRight } from 'lucide-react'
 
 const LINKS = {
   product: [
-    { label: 'How It Works', href: '/agenthouse/how-to' },
-    { label: 'Dashboard', href: '/agenthouse/dashboard' },
+    { label: 'How It Works', href: '/how-to' },
+    { label: 'Dashboard', href: '/dashboard' },
     { label: 'Open Source', href: 'https://github.com/yusufsafary/agenthouse', external: true },
   ],
   company: [
-    { label: 'About', href: '/agenthouse/about' },
+    { label: 'About', href: '/about' },
     { label: 'GitHub', href: 'https://github.com/yusufsafary', external: true },
   ],
   legal: [
-    { label: 'Cookie Policy', href: '/agenthouse/cookies' },
+    { label: 'Cookie Policy', href: '/cookies' },
   ],
 }
 

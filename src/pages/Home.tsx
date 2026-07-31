@@ -92,11 +92,11 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
-            <Link to="/agenthouse/login" className="btn-acid gap-2">
+            <Link to="/login" className="btn-acid gap-2">
               Launch App Free
               <ArrowRight size={16} />
             </Link>
-            <Link to="/agenthouse/how-to" className="btn-outline gap-2">
+            <Link to="/how-to" className="btn-outline gap-2">
               See How It Works
               <ChevronRight size={16} />
             </Link>
@@ -211,7 +211,7 @@ export default function Home() {
             <p className="text-mist text-base leading-relaxed mb-8">
               Ingest is built on the OpenTelemetry GenAI semantic conventions. Format is auto-detected from the trace structure.
             </p>
-            <Link to="/agenthouse/how-to" className="btn-outline">
+            <Link to="/how-to" className="btn-outline">
               View format docs
               <ArrowRight size={14} />
             </Link>
@@ -238,7 +238,7 @@ export default function Home() {
           <p className="text-mist max-w-xl mx-auto mb-10 text-lg">
             Free, open source, zero backend. Connect with email, MetaMask, or Phantom.
           </p>
-          <Link to="/agenthouse/login" className="btn-acid text-base px-10 py-4">
+          <Link to="/login" className="btn-acid text-base px-10 py-4">
             Start Auditing Free
             <ArrowRight size={18} />
           </Link>
