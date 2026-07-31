@@ -1,84 +1,70 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <!-- PRIMARY META -->
-      <title>AGENTHOUSE — Lighthouse for AI Agents</title>
-      <meta name="description" content="AGENTHOUSE is the command center for AI agents. Audit, score, and optimize your agent runs in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes." />
-      <meta name="keywords" content="AI agent audit, LLM cost optimization, agent tracing, OpenTelemetry AI, LangGraph audit, Vercel AI SDK, agent score, agenthouse" />
-      <meta name="author" content="AGENTHOUSE" />
-      <meta name="robots" content="index, follow" />
-      <link rel="canonical" href="https://agenthouse.fun/" />
-      <meta name="theme-color" content="#0a0a0a" />
+    <!-- PRIMARY META -->
+    <title>AGENTHOUSE — Lighthouse for AI Agents</title>
+    <meta name="description" content="AGENTHOUSE is the command center for AI agents. Audit, score, and optimize your agent runs in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes." />
+    <meta name="keywords" content="AI agent audit, LLM cost optimization, agent tracing, OpenTelemetry AI, LangGraph audit, Vercel AI SDK, agent score, agenthouse" />
+    <meta name="author" content="AGENTHOUSE" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://agenthouse.fun/" />
+    <meta name="theme-color" content="#0a0a0a" />
 
-      <!-- FAVICON STACK -->
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <link rel="manifest" href="/site.webmanifest" />
+    <!-- FAVICON STACK -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-      <!-- OPEN GRAPH -->
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="AGENTHOUSE" />
-      <meta property="og:title" content="AGENTHOUSE — Lighthouse for AI Agents" />
-      <meta property="og:description" content="Audit, score, and optimize your AI agent runs in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes." />
-      <meta property="og:url" content="https://agenthouse.fun/" />
-      <meta property="og:image" content="https://agenthouse.fun/og-image.png" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="AGENTHOUSE — Lighthouse for AI Agents. Score, audit, and fix your agent traces." />
-      <meta property="og:locale" content="en_US" />
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AGENTHOUSE" />
+    <meta property="og:title" content="AGENTHOUSE — Lighthouse for AI Agents" />
+    <meta property="og:description" content="Audit, score, and optimize your AI agent runs in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes." />
+    <meta property="og:url" content="https://agenthouse.fun/" />
+    <meta property="og:image" content="https://agenthouse.fun/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AGENTHOUSE — Lighthouse for AI Agents. Score, audit, and fix your agent traces." />
+    <meta property="og:locale" content="en_US" />
 
-      <!-- TWITTER CARD -->
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@agenthouse" />
-      <meta name="twitter:title" content="AGENTHOUSE — Lighthouse for AI Agents" />
-      <meta name="twitter:description" content="Audit, score, and optimize your AI agent runs in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes." />
-      <meta name="twitter:image" content="https://agenthouse.fun/og-image.png" />
-      <meta name="twitter:image:alt" content="AGENTHOUSE dashboard showing AI agent score gauge and audit results" />
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@agenthouse" />
+    <meta name="twitter:title" content="AGENTHOUSE — Lighthouse for AI Agents" />
+    <meta name="twitter:description" content="Audit, score, and optimize your AI agent runs in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes." />
+    <meta name="twitter:image" content="https://agenthouse.fun/og-image.png" />
+    <meta name="twitter:image:alt" content="AGENTHOUSE dashboard showing AI agent score gauge and audit results" />
 
-      <!-- JSON-LD STRUCTURED DATA -->
-      <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "AGENTHOUSE",
-        "url": "https://agenthouse.fun",
-        "description": "The command center for AI agents. Audit, score, and optimize your agent runs in seconds.",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Web",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "author": {
-          "@type": "Organization",
-          "name": "AGENTHOUSE",
-          "url": "https://agenthouse.fun"
-        },
-        "featureList": [
-          "AI Agent Cost Audit",
-          "Latency Optimization",
-          "Reliability Analysis",
-          "Context Pruning",
-          "OpenTelemetry Support",
-          "LangGraph Support",
-          "Vercel AI SDK Support"
-        ]
-      }
-      </script>
+    <!-- JSON-LD STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AGENTHOUSE",
+      "url": "https://agenthouse.fun",
+      "description": "The command center for AI agents. Audit, score, and optimize your agent runs in seconds.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "AGENTHOUSE", "url": "https://agenthouse.fun" },
+      "featureList": ["AI Agent Cost Audit","Latency Optimization","Reliability Analysis","Context Pruning","OpenTelemetry Support","LangGraph Support","Vercel AI SDK Support"]
+    }
+    </script>
 
-      <!-- FONTS -->
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-      <script type="module" crossorigin src="/assets/index-C9ZCOh6O.js"></script>
-      <link rel="stylesheet" crossorigin href="/assets/index-CnYtpCzF.css">
-    </head>
-    <body>
-      <div id="root"></div>
-    </body>
-    </html>
-    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-C9ZCOh6O.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CnYtpCzF.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
