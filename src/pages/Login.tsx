@@ -157,9 +157,13 @@ export default function Login() {
                 </p>
 
                 {/* MetaMask */}
-                <button
-                  onClick={handleMetamask}
-                  disabled={metamask.loading}
+                <div
+                  role={metamask.isAvailable ? 'button' : undefined}
+                  tabIndex={metamask.isAvailable ? 0 : undefined}
+                  onClick={metamask.isAvailable ? handleMetamask : undefined}
+                  onKeyDown={metamask.isAvailable ? e => {
+                    if (e.key === 'Enter' || e.key === ' ') handleMetamask()
+                  } : undefined}
                   className="w-full flex items-center justify-between gap-3 p-4 border border-steel hover:border-acid/60 transition-colors group"
                 >
                   <div className="flex items-center gap-3">
@@ -186,12 +190,16 @@ export default function Login() {
                       Install <ExternalLink size={10} />
                     </a>
                   )}
-                </button>
+                </div>
 
                 {/* Phantom */}
-                <button
-                  onClick={handlePhantom}
-                  disabled={phantom.loading}
+                <div
+                  role={phantom.isAvailable ? 'button' : undefined}
+                  tabIndex={phantom.isAvailable ? 0 : undefined}
+                  onClick={phantom.isAvailable ? handlePhantom : undefined}
+                  onKeyDown={phantom.isAvailable ? e => {
+                    if (e.key === 'Enter' || e.key === ' ') handlePhantom()
+                  } : undefined}
                   className="w-full flex items-center justify-between gap-3 p-4 border border-steel hover:border-acid/60 transition-colors group"
                 >
                   <div className="flex items-center gap-3">
@@ -218,7 +226,7 @@ export default function Login() {
                       Install <ExternalLink size={10} />
                     </a>
                   )}
-                </button>
+                </div>
 
                 <p className="text-xs text-fog text-center pt-1">
                   No wallet? Use the email login tab with our demo account.

@@ -1,4 +1,4 @@
-// Core audit engine ported from agent-house (MIT license, Addy Osmani)
+// Core browser-based audit engine (MIT licensed)
 // Re-implemented for browser/TypeScript ESM without Node.js dependencies
 
 export type SpanKind = 'agent' | 'llm' | 'tool' | 'retrieval' | 'chain' | 'unknown'

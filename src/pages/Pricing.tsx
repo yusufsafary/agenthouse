@@ -25,13 +25,13 @@ const PLANS = [
     price: 'Coming Soon',
     period: '',
     description: 'Advanced tooling for teams shipping agents to production.',
-    cta: 'Join Waitlist',
-    href: 'https://github.com/yusufsafary/agenthouse/discussions',
+    cta: 'Explore Free',
+    href: '/login',
     highlight: true,
     features: [
       'Everything in Free',
       'Team workspaces & shared audits',
-      'CI/CD integration (GitHub Actions)',
+      'CI/CD integration',
       'Historical score tracking',
       'Slack & webhook alerts',
       'Priority support',
@@ -100,23 +100,12 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              {plan.highlight ? (
-                <a
-                  href={plan.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-center py-3 text-sm font-bold uppercase tracking-widest"
-                >
-                  {plan.cta}
-                </a>
-              ) : (
-                <Link
-                  to={plan.href}
-                  className="btn-primary text-center py-3 text-sm font-bold uppercase tracking-widest"
-                >
-                  {plan.cta}
-                </Link>
-              )}
+              <Link
+                to={plan.href}
+                className={`${plan.highlight ? 'btn-secondary' : 'btn-primary'} text-center py-3 text-sm font-bold uppercase tracking-widest`}
+              >
+                {plan.cta}
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -128,15 +117,7 @@ export default function Pricing() {
           className="mt-12 border border-steel p-6 text-center"
         >
           <p className="text-sm text-fog">
-            AGENTHOUSE is open source. You can self-host, fork, or contribute on{' '}
-            <a
-              href="https://github.com/yusufsafary/agenthouse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-acid hover:underline"
-            >
-              GitHub
-            </a>.
+            AGENTHOUSE is free to use and processes your traces locally in the browser.
           </p>
         </motion.div>
       </section>

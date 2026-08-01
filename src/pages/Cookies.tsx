@@ -35,7 +35,7 @@ const SECTIONS = [
   {
     title: 'Third-Party Services',
     body: [
-      'GitHub Pages hosts this site. GitHub may collect server-side access logs (IP address, user agent, timestamp) as part of their standard hosting infrastructure. See the GitHub Privacy Statement for details.',
+      'Hosting provider: The hosting platform may collect standard server-side access logs such as IP address, user agent, and timestamp as part of its infrastructure.',
       'Google Fonts is used to load the Space Grotesk and JetBrains Mono typefaces. This involves a request to Google\'s servers. See Google\'s Privacy Policy for details. No additional tracking is performed by font loading.',
     ],
   },
@@ -56,7 +56,7 @@ const SECTIONS = [
   {
     title: 'Contact',
     body: [
-      'Questions about this policy? Open an issue or discussion on our GitHub repository at github.com/yusufsafary/agenthouse.',
+      'Questions about this policy? Please use the contact channel provided by the AGENTHOUSE team.',
     ],
   },
 ]
@@ -103,8 +103,7 @@ export default function Cookies() {
 
           <div className="mt-16 pt-8 border-t border-steel">
             <p className="text-sm text-fog mb-6">
-              This policy covers{' '}
-              <span className="text-acid">yusufsafary.github.io/agenthouse</span> only.
+              This policy covers <span className="text-acid">agenthouse.fun</span> only.
             </p>
             <Link to="" className="btn-outline">
               Back to Home

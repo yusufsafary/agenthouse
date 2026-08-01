@@ -11,7 +11,7 @@ const SECTIONS = [
   {
     title: 'Information We Collect',
     body: [
-      'Account data (optional): If you sign in with email, we store your display name and email address in your browser's localStorage only. If you connect a crypto wallet (MetaMask or Phantom), we store only your public wallet address. No passwords are stored — login uses a demo credential flow for evaluation purposes.',
+      "Account data (optional): If you sign in with email, we store your display name and email address in your browser's localStorage only. If you connect a crypto wallet (MetaMask or Phantom), we store only your public wallet address. No passwords are stored — login uses a demo credential flow for evaluation purposes.",
       'Session data: A session token ("ah_user") is written to localStorage when you sign in. It is never transmitted to any server.',
       'Trace data: Files you upload for auditing are processed entirely in memory within your browser tab. They are never uploaded, stored, or transmitted anywhere.',
     ],
@@ -28,8 +28,8 @@ const SECTIONS = [
   {
     title: 'Third-Party Services',
     body: [
-      'GitHub Pages: This site is hosted on GitHub Pages. GitHub may collect server-side access logs (IP address, user agent, timestamp) as part of their standard infrastructure. See the GitHub Privacy Statement for details.',
-      'Google Fonts: Space Grotesk and JetBrains Mono typefaces are loaded from Google's servers. This involves a standard HTTPS request that Google may log. See Google's Privacy Policy for details.',
+      'Hosting provider: The hosting platform may collect standard server-side access logs such as IP address, user agent, and timestamp as part of its infrastructure.',
+      "Google Fonts: Space Grotesk and JetBrains Mono typefaces are loaded from Google's servers. This involves a standard HTTPS request that Google may log. See Google's Privacy Policy for details.",
     ],
   },
   {
@@ -55,7 +55,7 @@ const SECTIONS = [
   {
     title: 'Contact',
     body: [
-      'Questions? Open an issue or discussion on our GitHub repository at github.com/yusufsafary/agenthouse.',
+      'Questions about this policy? Please use the contact channel provided by the AGENTHOUSE team.',
     ],
   },
 ]

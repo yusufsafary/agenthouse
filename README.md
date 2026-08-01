@@ -2,10 +2,10 @@
 
 **Lighthouse for AI Agents** — audit, score, and optimize your agent runs in seconds.
 
-[![GitHub Pages](https://img.shields.io/badge/Live-yusufsafary.github.io%2Fagenthouse-00FF66?style=flat&labelColor=0A0A0A)](https://yusufsafary.github.io/agenthouse/)
+[![Live Site](https://img.shields.io/badge/Live-agenthouse.fun-00FF66?style=flat&labelColor=0A0A0A)](https://agenthouse.fun/)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat&labelColor=0A0A0A)](./LICENSE)
 
-> Web-first fork of [agent-house](https://github.com/addyosmani/agent-house) by Addy Osmani — reimagined with a full product UI, Web3 authentication, and a live browser-based audit engine.
+> A browser-first AI agent audit workspace with a full product UI, Web3 authentication, and a live local audit engine.
 
 ## What It Does
 
@@ -29,7 +29,7 @@ AGENTHOUSE ingests an agent run trace and produces a scored report (cost, latenc
 
 ## Live Demo
 
-Visit [yusufsafary.github.io/agenthouse](https://yusufsafary.github.io/agenthouse/)
+Visit [agenthouse.fun](https://agenthouse.fun/)
 
 Demo credentials: `demo@agenthouse.dev` / `agenthouse2026`
 
@@ -73,4 +73,4 @@ pnpm build        # production build
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Based on [agent-house](https://github.com/addyosmani/agent-house) by Addy Osmani (MIT).
+MIT — see [LICENSE](./LICENSE).

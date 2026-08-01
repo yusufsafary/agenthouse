@@ -24,8 +24,8 @@ const SECTIONS = [
   {
     title: '4. Open Source License',
     body: [
-      'The source code of AGENTHOUSE is available under the MIT License at github.com/yusufsafary/agenthouse. You are free to fork, modify, and self-host the application under the terms of that license.',
-      'The MIT License applies to the code. These Terms of Service apply to your use of the hosted Service at agenthouse.fun.',
+      'AGENTHOUSE is available under the MIT License. You are free to use, modify, and self-host the application under the terms of that license.',
+      'The MIT License applies to the application. These Terms of Service apply to your use of the hosted Service at agenthouse.fun.',
     ],
   },
   {
@@ -62,7 +62,7 @@ const SECTIONS = [
   {
     title: '10. Contact',
     body: [
-      'Questions about these Terms? Open an issue or discussion at github.com/yusufsafary/agenthouse.',
+      'Questions about these Terms? Please use the contact channel provided by the AGENTHOUSE team.',
     ],
   },
 ]

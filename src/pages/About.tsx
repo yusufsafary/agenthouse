@@ -59,16 +59,7 @@ export default function About() {
             </div>
             <div>
               <p className="text-base text-fog leading-relaxed mb-6">
-                The project is a web-first fork of{' '}
-                <a
-                  href="https://github.com/addyosmani/agent-house"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-acid hover:underline"
-                >
-                  agent-house
-                </a>{' '}
-                by Addy Osmani, reimagined with a full product UI, Web3 authentication, and a live browser-based audit engine.
+                AGENTHOUSE is a web-first audit workspace, reimagined with a full product UI, Web3 authentication, and a live browser-based audit engine.
               </p>
               <p className="text-base text-fog leading-relaxed">
                 All audit logic runs entirely in the browser. Your traces never touch a server. Wallet login via MetaMask and Phantom gives you a portable identity without signing up for yet another account.
@@ -143,15 +134,6 @@ export default function About() {
               Try AGENTHOUSE
               <ArrowRight size={14} />
             </Link>
-            <a
-              href="https://github.com/yusufsafary/agenthouse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline"
-            >
-              View on GitHub
-              <ArrowRight size={14} />
-            </a>
           </div>
         </div>
       </section>

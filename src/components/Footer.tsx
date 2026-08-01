@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
-import { Github, Twitter, ArrowUpRight } from 'lucide-react'
+import { Twitter } from 'lucide-react'
 
 const LINKS = {
   product: [
     { label: 'How It Works', href: '/how-to' },
     { label: 'Pricing', href: '/pricing' },
     { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Open Source', href: 'https://github.com/yusufsafary/agenthouse', external: true },
   ],
   company: [
     { label: 'About', href: '/about' },
-    { label: 'GitHub', href: 'https://github.com/yusufsafary', external: true },
   ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy' },
@@ -34,15 +32,6 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-5">
               <a
-                href="https://github.com/yusufsafary/agenthouse"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 border border-steel text-fog hover:border-acid hover:text-acid transition-colors"
-                aria-label="GitHub"
-              >
-                <Github size={16} />
-              </a>
-              <a
                 href="https://twitter.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -60,16 +49,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {LINKS.product.map(l => (
                 <li key={l.href}>
-                  {l.external ? (
-                    <a href={l.href} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-fog hover:text-white transition-colors">
-                      {l.label}<ArrowUpRight size={12} />
-                    </a>
-                  ) : (
-                    <Link to={l.href} className="text-sm text-fog hover:text-white transition-colors">
-                      {l.label}
-                    </Link>
-                  )}
+                  <Link to={l.href} className="text-sm text-fog hover:text-white transition-colors">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -80,16 +62,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {LINKS.company.map(l => (
                 <li key={l.href}>
-                  {l.external ? (
-                    <a href={l.href} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-fog hover:text-white transition-colors">
-                      {l.label}<ArrowUpRight size={12} />
-                    </a>
-                  ) : (
-                    <Link to={l.href} className="text-sm text-fog hover:text-white transition-colors">
-                      {l.label}
-                    </Link>
-                  )}
+                  <Link to={l.href} className="text-sm text-fog hover:text-white transition-colors">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -111,9 +86,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-steel">
           <p className="text-xs text-fog text-center sm:text-left">
-            {year} AGENTHOUSE. MIT License. Based on{' '}
-            <a href="https://github.com/addyosmani/agent-house" target="_blank" rel="noopener noreferrer"
-              className="text-acid hover:underline">agent-house</a>{' '}by Addy Osmani.
+            {year} AGENTHOUSE. MIT License.
           </p>
         </div>
       </div>
