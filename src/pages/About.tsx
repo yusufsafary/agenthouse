@@ -39,7 +39,10 @@ const ABOUT_SCHEMA = {
     'AGENTHOUSE is an open-source AI agent audit platform that helps developers identify cost overruns, latency bottlenecks, and reliability issues in their LLM-powered agents.',
   foundingDate: '2026',
   license: 'https://opensource.org/licenses/MIT',
-  sameAs: ['https://github.com/yusufsafary/agenthouse'],
+  sameAs: [
+    'https://github.com/yusufsafary/agenthouse',
+    'https://x.com/agenthouseapp',
+  ],
 }
 
 export default function About() {

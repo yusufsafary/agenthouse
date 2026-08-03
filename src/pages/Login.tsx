@@ -5,6 +5,7 @@ import { Mail, Lock, AlertCircle, Loader2, Wallet, ExternalLink } from 'lucide-r
 import Logo from '../components/Logo'
 import { useAuth } from '../hooks/useAuth'
 import { useMetamask, usePhantom } from '../hooks/useWallet'
+import SEO from '../components/SEO'
 
 // Demo accounts for email/password login
 const DEMO_ACCOUNTS = [
@@ -66,6 +67,12 @@ export default function Login() {
 
   return (
     <main className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12">
+      <SEO
+        title="Login — AGENTHOUSE"
+        description="Sign in to AGENTHOUSE to audit your AI agent traces, track scores, and optimize LLM costs."
+        canonical="/login"
+        noindex={true}
+      />
       <div className="w-full max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

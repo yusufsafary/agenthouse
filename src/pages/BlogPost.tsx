@@ -263,8 +263,11 @@ export default function BlogPost() {
       logo: { '@type': 'ImageObject', url: 'https://agenthouse.fun/favicon.svg' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://agenthouse.fun/blog/${post.slug}` },
+    image: { '@type': 'ImageObject', url: 'https://agenthouse.fun/og-image.png', width: 1200, height: 630 },
     keywords: post.tags.join(', '),
   }
+
+  const relatedPosts = BLOG_POSTS.filter(p => p.slug !== post.slug)
 
   return (
     <main>
@@ -273,6 +276,10 @@ export default function BlogPost() {
         description={content.description}
         canonical={`/blog/${post.slug}`}
         ogType="article"
+        ogImageAlt={`${post.title} — AGENTHOUSE`}
+        keywords={post.tags.join(', ')}
+        articlePublishedTime={post.date}
+        articleModifiedTime={post.date}
         structuredData={ARTICLE_SCHEMA}
         breadcrumbs={[
           { name: 'Blog', url: '/blog' },
@@ -324,14 +331,38 @@ export default function BlogPost() {
             {content.body}
           </div>
 
-          <div className="mt-16 pt-8 border-t border-steel">
+          {/* Related posts */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-16 pt-8 border-t border-steel">
+              <p className="text-xs font-bold uppercase tracking-widest text-fog mb-6">Related Articles</p>
+              <div className="space-y-4">
+                {relatedPosts.map(related => (
+                  <Link
+                    key={related.slug}
+                    to={`/blog/${related.slug}`}
+                    className="flex items-start gap-4 group border border-steel bg-ash p-4 hover:border-acid/50 transition-colors"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold text-white group-hover:text-acid transition-colors leading-snug mb-1">
+                        {related.title}
+                      </p>
+                      <p className="text-xs text-fog">{related.readTime}</p>
+                    </div>
+                    <ArrowRight size={14} className="text-fog group-hover:text-acid transition-colors shrink-0 mt-0.5" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-10 pt-8 border-t border-steel">
             <p className="text-sm text-fog mb-6">Ready to audit your own agent?</p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link to="/login" className="btn-acid">
                 Start Auditing Free <ArrowRight size={14} />
               </Link>
               <Link to="/blog" className="btn-outline">
-                More Articles <ArrowRight size={14} />
+                All Articles <ArrowRight size={14} />
               </Link>
             </div>
           </div>

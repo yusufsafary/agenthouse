@@ -136,9 +136,10 @@ export default function Home() {
   return (
     <main>
       <SEO
-        title="AGENTHOUSE — Lighthouse for AI Agents"
-        description="AGENTHOUSE is the free, open-source command center for AI agents. Audit, score, and optimize your agent traces in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes."
+        title="AGENTHOUSE — AI Agent Audit Tool | Cut LLM Costs by 80%"
+        description="Free, open-source AI agent audit tool. Score and optimize your agent traces in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes."
         canonical="/"
+        keywords="AI agent audit, LLM cost optimization, agent tracing, OpenTelemetry AI, LangGraph audit, Vercel AI SDK, agent score, AI agent latency, LLM cost reduction"
         structuredData={[HOME_STRUCTURED_DATA, HOME_FAQ_SCHEMA]}
       />
 
