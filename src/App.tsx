@@ -11,6 +11,8 @@ import Terms from './pages/Terms'
 import Cookies from './pages/Cookies'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import NotFound from './pages/NotFound'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -29,6 +31,8 @@ function AppRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/how-to" element={<HowTo />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/cookies" element={<Cookies />} />

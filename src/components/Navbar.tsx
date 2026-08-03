@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/how-to', label: 'How To' },
+  { href: '/blog', label: 'Blog' },
   { href: '/pricing', label: 'Pricing' },
 ]
 
@@ -33,12 +34,12 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-ink/95 backdrop-blur-sm border-b border-steel">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" onClick={() => setOpen(false)}>
+          <Link to="/" onClick={() => setOpen(false)} aria-label="AGENTHOUSE Home">
             <Logo size="sm" />
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
             {NAV_LINKS.map(link => (
               <Link
                 key={link.href}
@@ -89,7 +90,8 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden p-2 text-white"
-            aria-label="Toggle menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -106,7 +108,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden bg-smoke border-b border-steel overflow-hidden"
           >
-            <div className="px-4 py-4 flex flex-col gap-1">
+            <nav className="px-4 py-4 flex flex-col gap-1" aria-label="Mobile navigation">
               {NAV_LINKS.map(link => (
                 <Link
                   key={link.href}
@@ -146,7 +148,7 @@ export default function Navbar() {
                   </Link>
                 )}
               </div>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

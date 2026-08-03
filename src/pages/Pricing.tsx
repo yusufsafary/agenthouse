@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Check, Zap } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const PLANS = [
   {
@@ -39,9 +40,69 @@ const PLANS = [
   },
 ]
 
+const PRICING_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'AGENTHOUSE Pricing',
+  url: 'https://agenthouse.fun/pricing',
+  description:
+    'AGENTHOUSE is free forever. Unlimited AI agent trace audits with zero backend and no data collection. Pro plan with team features coming soon.',
+  mainEntity: {
+    '@type': 'Product',
+    name: 'AGENTHOUSE Free',
+    description: 'Free AI agent audit tool with unlimited trace uploads and full audit reports.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      priceValidUntil: '2027-12-31',
+    },
+  },
+}
+
+const PRICING_FAQ = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is AGENTHOUSE really free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. AGENTHOUSE Free is free forever. All audit processing happens in your browser — no subscription, no credit card, no backend required.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is included in the free plan?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The free plan includes unlimited local trace uploads, full audit reports per trace, cost, latency and reliability scores, support for OpenTelemetry, LangGraph, Vercel AI SDK, and Google ADK.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'When will the Pro plan launch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Pro plan with team workspaces, CI/CD integration, and historical score tracking is coming soon. Start with the free plan today.',
+      },
+    },
+  ],
+}
+
 export default function Pricing() {
   return (
     <main>
+      <SEO
+        title="Pricing — AGENTHOUSE Free AI Agent Audit Tool"
+        description="AGENTHOUSE is free forever. Unlimited AI agent trace audits, full cost and latency scoring, zero backend, no data collection. Pro plan with team features coming soon."
+        canonical="/pricing"
+        structuredData={[PRICING_SCHEMA, PRICING_FAQ]}
+        breadcrumbs={[{ name: 'Pricing', url: '/pricing' }]}
+      />
+
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -65,7 +126,7 @@ export default function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {PLANS.map((plan, i) => (
-            <motion.div
+            <motion.article
               key={plan.name}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -94,7 +155,7 @@ export default function Pricing() {
               <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map(f => (
                   <li key={f} className="flex items-start gap-3 text-sm text-mist">
-                    <Check size={14} className="text-acid mt-0.5 shrink-0" />
+                    <Check size={14} className="text-acid mt-0.5 shrink-0" aria-hidden="true" />
                     {f}
                   </li>
                 ))}
@@ -106,20 +167,35 @@ export default function Pricing() {
               >
                 {plan.cta}
               </Link>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 border border-steel p-6 text-center"
-        >
-          <p className="text-sm text-fog">
-            AGENTHOUSE is free to use and processes your traces locally in the browser.
-          </p>
-        </motion.div>
+        {/* FAQ */}
+        <div className="mt-20 max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-8 text-center">Pricing questions</h2>
+          <div className="space-y-4">
+            {[
+              {
+                q: 'Is AGENTHOUSE really free?',
+                a: 'Yes. AGENTHOUSE Free is free forever. All audit processing happens in your browser — no subscription, no credit card, no backend required.',
+              },
+              {
+                q: 'What is included in the free plan?',
+                a: 'Unlimited local trace uploads, full audit reports per trace, cost, latency and reliability scores, plus support for OpenTelemetry, LangGraph, Vercel AI SDK, and Google ADK.',
+              },
+              {
+                q: 'When will the Pro plan launch?',
+                a: 'The Pro plan with team workspaces, CI/CD integration, and historical score tracking is coming soon. Start with the free plan today — no migration required.',
+              },
+            ].map(({ q, a }) => (
+              <div key={q} className="border border-steel bg-ash p-5">
+                <h3 className="text-sm font-bold text-white mb-2">{q}</h3>
+                <p className="text-sm text-fog leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   )

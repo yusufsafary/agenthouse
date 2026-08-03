@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Shield, TrendingDown, GitBranch, ChevronRight } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const TICKER_ITEMS = [
   'AUDIT AGENT TRACES',
@@ -47,10 +48,78 @@ const BEFORE_AFTER = {
 
 const FORMATS = ['OpenTelemetry GenAI', 'Vercel AI SDK', 'LangGraph / LangSmith', 'Google ADK']
 
+const HOME_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'AGENTHOUSE',
+  url: 'https://agenthouse.fun',
+  description:
+    'The command center for AI agents. Audit, score, and optimize your agent runs in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes.',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  author: {
+    '@type': 'Organization',
+    name: 'AGENTHOUSE',
+    url: 'https://agenthouse.fun',
+  },
+  featureList: [
+    'AI Agent Cost Audit',
+    'Latency Optimization',
+    'Reliability Analysis',
+    'Context Pruning',
+    'OpenTelemetry Support',
+    'LangGraph Support',
+    'Vercel AI SDK Support',
+    'Google ADK Support',
+    'Zero Backend Required',
+    'Open Source MIT License',
+  ],
+}
+
+const HOME_FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is AGENTHOUSE?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AGENTHOUSE is a free, open-source AI agent audit tool. Drop a trace JSON and get a scored report with ranked fixes, estimated dollar and millisecond savings. It runs entirely in the browser — zero backend required.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does AGENTHOUSE cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AGENTHOUSE is completely free. All audit processing happens in your browser with no subscription, no backend, and no data collection.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which AI agent frameworks does AGENTHOUSE support?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AGENTHOUSE supports OpenTelemetry GenAI, Vercel AI SDK, LangGraph / LangSmith, and Google ADK. Any framework emitting OpenTelemetry traces is compatible.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is my trace data safe?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. All audit logic runs entirely in your browser. Your trace data never leaves your machine and is never sent to any server.',
+      },
+    },
+  ],
+}
+
 function TickerTape() {
   const doubled = [...TICKER_ITEMS, ...TICKER_ITEMS]
   return (
-    <div className="ticker-wrap bg-acid py-3 overflow-hidden">
+    <div className="ticker-wrap bg-acid py-3 overflow-hidden" aria-hidden="true">
       <div className="ticker-inner">
         {doubled.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-4 mx-8 text-ink text-xs font-bold uppercase tracking-widest whitespace-nowrap">
@@ -66,8 +135,15 @@ function TickerTape() {
 export default function Home() {
   return (
     <main>
+      <SEO
+        title="AGENTHOUSE — Lighthouse for AI Agents"
+        description="AGENTHOUSE is the free, open-source command center for AI agents. Audit, score, and optimize your agent traces in seconds. Cut LLM costs by 80%, reduce latency, and eliminate failure modes."
+        canonical="/"
+        structuredData={[HOME_STRUCTURED_DATA, HOME_FAQ_SCHEMA]}
+      />
+
       {/* Hero */}
-      <section className="min-h-[92vh] flex flex-col justify-center px-4 sm:px-6 max-w-7xl mx-auto pt-16 pb-8">
+      <section className="min-h-[92vh] flex flex-col justify-center px-4 sm:px-6 max-w-7xl mx-auto pt-16 pb-8" aria-label="Hero">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -106,96 +182,77 @@ export default function Home() {
           <div className="flex flex-wrap gap-4 mt-12">
             {[
               { value: '7', label: 'Audit Checks' },
-              { value: '4', label: 'Trace Formats' },
-              { value: '0', label: 'Backend Needed' },
-              { value: '100%', label: 'Open Source' },
+              { value: '80%', label: 'Avg Cost Reduction' },
+              { value: '4', label: 'Frameworks Supported' },
+              { value: '0', label: 'Data Leaves Browser' },
             ].map(stat => (
-              <div key={stat.label} className="px-4 py-2 border border-steel bg-ash">
-                <span className="text-xl font-bold text-acid">{stat.value}</span>
-                <span className="ml-2 text-xs text-fog uppercase tracking-wider">{stat.label}</span>
+              <div key={stat.label} className="flex flex-col items-start">
+                <span className="text-2xl font-bold text-acid">{stat.value}</span>
+                <span className="text-xs text-fog uppercase tracking-wider mt-0.5">{stat.label}</span>
               </div>
             ))}
           </div>
         </motion.div>
-
-        {/* Before / After preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl"
-        >
-          {[BEFORE_AFTER.before, BEFORE_AFTER.after].map((item, i) => {
-            const isAfter = i === 1
-            return (
-              <div key={i} className={`p-5 border ${isAfter ? 'border-acid/50 bg-acid/5' : 'border-steel bg-ash'}`}>
-                <p className="text-xs font-bold uppercase tracking-widest text-fog mb-3">{item.label}</p>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className={`text-4xl font-bold tabular-nums ${isAfter ? 'text-acid' : 'text-white'}`}>
-                    {item.score}
-                  </span>
-                  <span className="text-xs text-fog">/100</span>
-                </div>
-                <div className="flex gap-4 text-xs text-fog">
-                  <span>Cost <strong className="text-white ml-1">{item.cost}</strong></span>
-                  <span>Time <strong className="text-white ml-1">{item.time}</strong></span>
-                </div>
-              </div>
-            )
-          })}
-          <div className="sm:col-span-2 text-center py-2">
-            <span className="text-xs text-acid font-bold tracking-widest">+28 POINTS &middot; SAVED $0.221 AND 5s PER RUN</span>
-          </div>
-        </motion.div>
       </section>
 
-      {/* Ticker */}
       <TickerTape />
 
       {/* Features */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-        <div className="mb-12">
-          <p className="section-label mb-3">What We Catch</p>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tightest">Four dimensions. One score.</h2>
-        </div>
-
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24" aria-label="Features">
+        <p className="section-label mb-3">What AGENTHOUSE Audits</p>
+        <h2 className="text-3xl sm:text-5xl font-bold tracking-tightest mb-4 max-w-2xl" style={{ letterSpacing: '-0.03em' }}>
+          Four dimensions. One score.
+        </h2>
+        <p className="text-mist text-base max-w-xl mb-14 leading-relaxed">
+          Every trace gets scored on cost, latency, reliability, and context. Each finding comes with a ranked fix and estimated savings.
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {FEATURES.map((f, i) => (
-            <motion.div
-              key={f.label}
+            <motion.article
+              key={f.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.6 }}
-              className="card-dark group"
+              transition={{ delay: i * 0.08 }}
+              className="card-dark"
             >
               <div className="flex items-center gap-2 mb-4">
                 {f.icon}
                 <span className="text-xs font-bold uppercase tracking-widest text-fog">{f.label}</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-3 group-hover:text-acid transition-colors">{f.title}</h3>
+              <h3 className="text-lg font-bold text-white mb-3">{f.title}</h3>
               <p className="text-sm text-fog leading-relaxed">{f.body}</p>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </section>
 
-      {/* How it works strip */}
-      <section className="bg-smoke border-y border-steel py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="section-label mb-3">Process</p>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tightest mb-12">Three steps to clarity.</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-steel">
-            {[
-              { num: '01', title: 'Drop your trace', body: 'Upload any trace JSON from OpenTelemetry, Vercel AI SDK, LangGraph, or Google ADK. Auto-detected.' },
-              { num: '02', title: 'Get your score', body: 'AGENTHOUSE runs 7 audits across cost, latency, reliability, and context. Your overall score: 0-100.' },
-              { num: '03', title: 'Apply ranked fixes', body: 'Each finding comes with exact spans, estimated $ and ms saved, and a code-level remediation hint.' },
-            ].map((step) => (
-              <div key={step.num} className="bg-ink p-8">
-                <span className="text-5xl font-bold text-acid opacity-30 block mb-6">{step.num}</span>
-                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                <p className="text-sm text-fog leading-relaxed">{step.body}</p>
+      {/* Before / After */}
+      <section className="border-y border-steel bg-smoke" aria-label="Before and after comparison">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <p className="section-label mb-3">Impact</p>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tightest mb-14" style={{ letterSpacing: '-0.03em' }}>
+            Real results from real agents.
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
+            {([
+              { ...BEFORE_AFTER.before, tag: 'Before', tagColor: 'text-hot border-hot' },
+              { ...BEFORE_AFTER.after, tag: 'After', tagColor: 'text-acid border-acid' },
+            ] as Array<typeof BEFORE_AFTER.before & { tag: string; tagColor: string }>).map(item => (
+              <div key={item.tag} className="border border-steel bg-ash p-6">
+                <span className={`text-xs font-bold uppercase tracking-[0.2em] border px-2 py-0.5 ${item.tagColor}`}>{item.tag}</span>
+                <p className="text-xs text-fog mt-4 mb-2 uppercase tracking-wider">{item.label}</p>
+                <p className="text-5xl font-bold text-white mb-4">{item.score}<span className="text-2xl text-fog">/100</span></p>
+                <div className="flex gap-6">
+                  <div>
+                    <p className="text-xs text-fog uppercase tracking-wider">Cost / Run</p>
+                    <p className="text-lg font-bold text-white mt-1">{item.cost}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-fog uppercase tracking-wider">Latency</p>
+                    <p className="text-lg font-bold text-white mt-1">{item.time}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -203,7 +260,7 @@ export default function Home() {
       </section>
 
       {/* Formats */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24" aria-label="Supported frameworks">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="section-label mb-3">Compatibility</p>
@@ -219,7 +276,7 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-3">
             {FORMATS.map((f) => (
               <div key={f} className="flex items-center gap-3 p-4 border border-steel bg-ash">
-                <span className="w-2 h-2 bg-acid flex-shrink-0" />
+                <span className="w-2 h-2 bg-acid flex-shrink-0" aria-hidden="true" />
                 <span className="text-sm font-medium text-white">{f}</span>
               </div>
             ))}
@@ -227,8 +284,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24 border-t border-steel" aria-label="Frequently asked questions">
+        <p className="section-label mb-3">FAQ</p>
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tightest mb-12">Frequently asked questions</h2>
+        <div className="max-w-3xl space-y-6">
+          {[
+            {
+              q: 'What is AGENTHOUSE?',
+              a: 'AGENTHOUSE is a free, open-source AI agent audit tool. Drop a trace JSON and receive a scored report with ranked fixes, estimated dollar and millisecond savings. Everything runs in the browser — no backend, no account required.',
+            },
+            {
+              q: 'Which AI agent frameworks does AGENTHOUSE support?',
+              a: 'AGENTHOUSE supports OpenTelemetry GenAI, Vercel AI SDK, LangGraph / LangSmith, and Google ADK. Any framework that emits OTLP JSON traces is compatible.',
+            },
+            {
+              q: 'Is my trace data safe?',
+              a: 'Yes. All audit logic runs entirely in your browser. Your trace data never leaves your machine and is never sent to any server.',
+            },
+            {
+              q: 'How much does AGENTHOUSE cost?',
+              a: 'AGENTHOUSE is completely free. All audit processing happens in your browser with no subscription, no backend, and no data collection required.',
+            },
+          ].map(({ q, a }) => (
+            <div key={q} className="border border-steel bg-ash p-6">
+              <h3 className="text-base font-bold text-white mb-3">{q}</h3>
+              <p className="text-sm text-fog leading-relaxed">{a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="border-t border-steel bg-smoke">
+      <section className="border-t border-steel bg-smoke" aria-label="Call to action">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 text-center">
           <h2 className="text-4xl sm:text-6xl font-bold tracking-tightest mb-6">
             Your agent is leaking money.

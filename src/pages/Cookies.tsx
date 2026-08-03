@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 const SECTIONS = [
   {
@@ -36,15 +37,15 @@ const SECTIONS = [
     title: 'Third-Party Services',
     body: [
       'Hosting provider: The hosting platform may collect standard server-side access logs such as IP address, user agent, and timestamp as part of its infrastructure.',
-      'Google Fonts is used to load the Space Grotesk and JetBrains Mono typefaces. This involves a request to Google\'s servers. See Google\'s Privacy Policy for details. No additional tracking is performed by font loading.',
+      "Google Fonts is used to load the Space Grotesk and JetBrains Mono typefaces. This involves a request to Google's servers. See Google's Privacy Policy for details. No additional tracking is performed by font loading.",
     ],
   },
   {
     title: 'Your Choices',
     body: [
-      'You can clear your session at any time by clicking Sign Out in the navigation bar, or by clearing your browser\'s localStorage for this site.',
-      'You can use AGENTHOUSE without signing in to browse the public pages (Home, About, How To, Cookies). Signing in is only required to access the Dashboard and analyze traces.',
-      'If you want to block all storage, enable your browser\'s private/incognito mode. The application will still function; you will simply need to sign in again each visit.',
+      "You can clear your session at any time by clicking Sign Out in the navigation bar, or by clearing your browser's localStorage for this site.",
+      'You can use AGENTHOUSE without signing in to browse the public pages (Home, About, How To, Blog, Pricing). Signing in is only required to access the Dashboard and analyze traces.',
+      "If you want to block all storage, enable your browser's private/incognito mode. The application will still function; you will simply need to sign in again each visit.",
     ],
   },
   {
@@ -64,6 +65,12 @@ const SECTIONS = [
 export default function Cookies() {
   return (
     <main>
+      <SEO
+        title="Cookie Policy — AGENTHOUSE"
+        description="AGENTHOUSE Cookie Policy. We use minimal browser storage — no third-party tracking, no analytics cookies, no advertising. All audit data stays in your browser."
+        canonical="/cookies"
+        breadcrumbs={[{ name: 'Cookie Policy', url: '/cookies' }]}
+      />
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -77,7 +84,7 @@ export default function Cookies() {
           >
             Cookie <span className="text-acid">Policy</span>
           </h1>
-          <p className="text-sm text-fog mb-12">Last updated: July 2026</p>
+          <p className="text-sm text-fog mb-12">Last updated: August 2026</p>
 
           <div className="space-y-10">
             {SECTIONS.map((section, i) => (
@@ -105,7 +112,7 @@ export default function Cookies() {
             <p className="text-sm text-fog mb-6">
               This policy covers <span className="text-acid">agenthouse.fun</span> only.
             </p>
-            <Link to="" className="btn-outline">
+            <Link to="/" className="btn-outline">
               Back to Home
             </Link>
           </div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Terminal, FileJson, CheckCircle } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const CODE_EXAMPLES = {
   otel: `// OpenTelemetry GenAI (OTLP JSON format)
@@ -78,125 +79,161 @@ const STEPS = [
   { num: '05', title: 'Apply the ranked fixes', body: 'Each audit includes a code-level hint. Start with the lowest-scoring audits. Re-run the trace after applying fixes to confirm the score improves.' },
 ]
 
+const HOWTO_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Audit an AI Agent Trace with AGENTHOUSE',
+  description:
+    'Step-by-step guide to auditing your AI agent traces using AGENTHOUSE. Collect your trace, upload it, read the scored report, and apply ranked fixes to cut LLM costs and latency.',
+  totalTime: 'PT5M',
+  supply: [{ '@type': 'HowToSupply', name: 'AI agent trace JSON file (OpenTelemetry, LangGraph, Vercel AI SDK, or Google ADK format)' }],
+  tool: [{ '@type': 'HowToTool', name: 'AGENTHOUSE (free, browser-based)' }],
+  step: STEPS.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.title,
+    text: s.body,
+  })),
+}
+
+const HOWTO_FAQ = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What trace formats does AGENTHOUSE support?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AGENTHOUSE supports OpenTelemetry GenAI (OTLP JSON), Vercel AI SDK traces, LangGraph / LangSmith traces, and Google ADK run_result JSON. The format is auto-detected from the trace structure.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does AGENTHOUSE score an AI agent trace?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AGENTHOUSE runs 7 audit checks across four dimensions: cost (model tier mismatch, uncacheable prompts), latency (duplicate tool calls, parallelizable calls), reliability (failed spans, retry loops), and context (oversized prompts). Each check contributes to a 0-100 score.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I export a trace from LangGraph?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Enable LangSmith tracing with LANGCHAIN_TRACING_V2=true, then export the run as JSON from the LangSmith UI or API. Pass the exported JSON directly to AGENTHOUSE.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I export a trace from Vercel AI SDK?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Use @opentelemetry/exporter-trace-otlp-http with the OTLP JSON exporter. Wrap your AI calls with the SDK built-in tracer and export the resulting JSON file.',
+      },
+    },
+  ],
+}
+
 export default function HowTo() {
   return (
     <main>
+      <SEO
+        title="How to Audit AI Agent Traces — AGENTHOUSE Guide"
+        description="Step-by-step guide to auditing your AI agent with AGENTHOUSE. Upload an OpenTelemetry, LangGraph, or Vercel AI SDK trace and get a scored report with ranked fixes in seconds."
+        canonical="/how-to"
+        structuredData={[HOWTO_SCHEMA, HOWTO_FAQ]}
+        breadcrumbs={[{ name: 'How To', url: '/how-to' }]}
+      />
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="section-label mb-4">Documentation</p>
+          <p className="section-label mb-4">How It Works</p>
           <h1
             className="text-5xl sm:text-7xl font-bold tracking-tightest mb-8"
             style={{ letterSpacing: '-0.04em' }}
           >
-            How to use
+            From trace to fix
             <br />
-            <span className="text-acid">AGENTHOUSE.</span>
+            in <span className="text-acid">five steps.</span>
           </h1>
-          <p className="text-lg text-mist max-w-2xl leading-relaxed mb-4">
-            From trace to actionable report in under 30 seconds. No installation, no account required beyond sign-in.
-          </p>
         </motion.div>
 
-        {/* Step by step */}
-        <div className="mt-16">
-          <p className="section-label mb-8">Step by Step</p>
-          <div className="space-y-px bg-steel max-w-4xl">
-            {STEPS.map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-ink flex gap-6 p-6"
-              >
-                <span className="text-4xl font-bold text-acid opacity-25 flex-shrink-0 leading-none mt-1">{step.num}</span>
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-sm text-fog leading-relaxed">{step.body}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Steps */}
+        <div className="mt-12 max-w-3xl space-y-6">
+          {STEPS.map((s, i) => (
+            <motion.div
+              key={s.num}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07 }}
+              className="flex gap-6 p-6 border border-steel bg-ash"
+            >
+              <span className="text-3xl font-bold text-acid/30 font-mono flex-shrink-0">{s.num}</span>
+              <div>
+                <h2 className="text-base font-bold text-white mb-2">{s.title}</h2>
+                <p className="text-sm text-fog leading-relaxed">{s.body}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* Trace formats */}
         <div className="mt-20">
-          <p className="section-label mb-4">Supported Trace Formats</p>
-          <h2 className="text-3xl font-bold tracking-tightest mb-8">
-            Auto-detected from your JSON.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {Object.entries(CODE_EXAMPLES).map(([key, code]) => {
-              const labels: Record<string, string> = {
-                otel: 'OpenTelemetry GenAI (OTLP)',
-                vercel: 'Vercel AI SDK',
-                langgraph: 'LangGraph / LangSmith',
-                adk: 'Google ADK',
-              }
-              return (
-                <div key={key} className="border border-steel bg-ash">
-                  <div className="flex items-center gap-2 px-4 py-2 border-b border-steel">
-                    <Terminal size={12} className="text-acid" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-acid">{labels[key]}</span>
-                  </div>
-                  <pre className="p-4 text-xs text-mist font-mono overflow-x-auto leading-relaxed">{code}</pre>
+          <p className="section-label mb-4">Supported Formats</p>
+          <h2 className="text-3xl font-bold tracking-tightest mb-8">Four trace formats supported</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {(Object.entries(CODE_EXAMPLES) as [string, string][]).map(([key, code]) => (
+              <div key={key} className="border border-steel bg-ash overflow-hidden">
+                <div className="flex items-center gap-2 px-4 py-2 border-b border-steel">
+                  <Terminal size={12} className="text-acid" />
+                  <span className="text-xs font-bold text-acid uppercase tracking-widest">{key}</span>
                 </div>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* Audit reference */}
-        <div className="mt-20">
-          <p className="section-label mb-4">Audit Reference</p>
-          <h2 className="text-3xl font-bold tracking-tightest mb-8">
-            What each audit checks.
-          </h2>
-
-          <div className="space-y-3 max-w-4xl">
-            {AUDITS.map((a, i) => (
-              <motion.div
-                key={a.id}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-                className="card-dark flex flex-col sm:flex-row sm:items-start gap-4"
-              >
-                <div className="flex-shrink-0">
-                  <span className="inline-block px-2 py-1 text-xs font-bold uppercase tracking-widest bg-acid/10 text-acid">{a.cat}</span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <CheckCircle size={14} className="text-acid flex-shrink-0" />
-                    <h3 className="text-sm font-bold text-white">{a.title}</h3>
-                  </div>
-                  <p className="text-sm text-fog leading-relaxed">{a.desc}</p>
-                </div>
-              </motion.div>
+                <pre className="p-4 text-xs text-fog overflow-x-auto leading-relaxed">
+                  <code>{code}</code>
+                </pre>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Interpretation */}
+        {/* Audits */}
         <div className="mt-20 max-w-3xl">
-          <p className="section-label mb-4">Score Interpretation</p>
-          <h2 className="text-3xl font-bold tracking-tightest mb-6">Reading your score</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+          <p className="section-label mb-4">Audit Checks</p>
+          <h2 className="text-3xl font-bold tracking-tightest mb-8">What AGENTHOUSE audits</h2>
+          <div className="space-y-3">
+            {AUDITS.map((a) => (
+              <div key={a.id} className="flex gap-4 p-5 border border-steel bg-ash">
+                <CheckCircle size={16} className="text-acid flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <div className="flex items-center gap-3 mb-1.5">
+                    <span className="text-sm font-bold text-white">{a.title}</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-acid border border-acid/30 px-1.5 py-0.5">{a.cat}</span>
+                  </div>
+                  <p className="text-sm text-fog leading-relaxed">{a.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Scoring */}
+        <div className="mt-20 max-w-3xl">
+          <p className="section-label mb-4">Scoring</p>
+          <h2 className="text-3xl font-bold tracking-tightest mb-6">How the score is calculated</h2>
+          <div className="grid grid-cols-3 gap-4 mb-8">
             {[
-              { range: '90-100', label: 'Excellent', color: '#00FF66' },
-              { range: '70-89', label: 'Good', color: '#FFE500' },
-              { range: '50-69', label: 'Needs Work', color: '#FF8C00' },
-              { range: '0-49', label: 'Critical', color: '#FF2D55' },
+              { range: '90-100', label: 'Excellent', color: 'text-acid' },
+              { range: '70-89', label: 'Good', color: 'text-volt' },
+              { range: '0-69', label: 'Needs Work', color: 'text-hot' },
             ].map(s => (
-              <div key={s.range} className="bg-ash border border-steel p-4 text-center" style={{ borderTopColor: s.color, borderTopWidth: 2 }}>
-                <p className="text-lg font-bold" style={{ color: s.color }}>{s.range}</p>
+              <div key={s.range} className="border border-steel bg-ash p-4 text-center">
+                <p className={`text-2xl font-bold ${s.color}`}>{s.range}</p>
                 <p className="text-xs text-fog uppercase tracking-wider mt-1">{s.label}</p>
               </div>
             ))}
@@ -206,20 +243,20 @@ export default function HowTo() {
           </p>
         </div>
 
-        {/* Getting trace from frameworks */}
+        {/* Framework Tips */}
         <div className="mt-20 max-w-3xl">
           <p className="section-label mb-4">Framework Tips</p>
           <h2 className="text-3xl font-bold tracking-tightest mb-6">Exporting traces</h2>
           <div className="space-y-4">
             {[
-              { fw: 'Vercel AI SDK', tip: 'Use @opentelemetry/exporter-trace-otlp-http with the OTLP JSON exporter. Wrap your AI calls with the SDK\'s built-in tracer.' },
+              { fw: 'Vercel AI SDK', tip: "Use @opentelemetry/exporter-trace-otlp-http with the OTLP JSON exporter. Wrap your AI calls with the SDK's built-in tracer." },
               { fw: 'LangGraph', tip: 'Enable LangSmith tracing with LANGCHAIN_TRACING_V2=true, then export the run as JSON from the LangSmith UI or API.' },
               { fw: 'Google ADK', tip: 'ADK emits a run_result JSON natively. Pass it directly to AGENTHOUSE without transformation.' },
               { fw: 'Custom Agent', tip: 'Instrument with @opentelemetry/sdk-node and the GenAI semantic convention attributes. Export with the OTLP JSON exporter.' },
             ].map(item => (
               <div key={item.fw} className="flex gap-4 p-4 border border-steel bg-ash">
                 <div className="flex-shrink-0">
-                  <FileJson size={16} className="text-acid mt-0.5" />
+                  <FileJson size={16} className="text-acid mt-0.5" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-white mb-1">{item.fw}</p>

@@ -6,6 +6,7 @@ const LINKS = {
   product: [
     { label: 'How It Works', href: '/how-to' },
     { label: 'Pricing', href: '/pricing' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Dashboard', href: '/dashboard' },
   ],
   company: [
@@ -32,11 +33,11 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-5">
               <a
-                href="https://twitter.com/"
+                href="https://twitter.com/agenthouse"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 border border-steel text-fog hover:border-acid hover:text-acid transition-colors"
-                aria-label="Twitter"
+                aria-label="Follow AGENTHOUSE on Twitter"
               >
                 <Twitter size={16} />
               </a>
@@ -86,7 +87,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-steel">
           <p className="text-xs text-fog text-center sm:text-left">
-            {year} AGENTHOUSE. MIT License.
+            &copy; {year} AGENTHOUSE. MIT License.
           </p>
         </div>
       </div>

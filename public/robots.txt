@@ -1,5 +1,5 @@
 User-agent: *
-    Allow: /
+Allow: /
+Disallow: /dashboard
 
-    Sitemap: https://agenthouse.fun/sitemap.xml
-    
+Sitemap: https://agenthouse.fun/sitemap.xml

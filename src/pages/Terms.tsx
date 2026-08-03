@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
 
 const SECTIONS = [
   {
@@ -70,6 +71,12 @@ const SECTIONS = [
 export default function Terms() {
   return (
     <main>
+      <SEO
+        title="Terms of Service — AGENTHOUSE"
+        description="AGENTHOUSE Terms of Service. Free, open-source AI agent audit tool available under the MIT License. All processing happens locally in your browser."
+        canonical="/terms"
+        breadcrumbs={[{ name: 'Terms of Service', url: '/terms' }]}
+      />
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -83,7 +90,7 @@ export default function Terms() {
           >
             Terms of <span className="text-acid">Service</span>
           </h1>
-          <p className="text-sm text-fog mb-12">Last updated: July 2026</p>
+          <p className="text-sm text-fog mb-12">Last updated: August 2026</p>
 
           <div className="space-y-10">
             {SECTIONS.map((section, i) => (

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
 
 const SECTIONS = [
   {
@@ -63,6 +64,12 @@ const SECTIONS = [
 export default function Privacy() {
   return (
     <main>
+      <SEO
+        title="Privacy Policy — AGENTHOUSE"
+        description="AGENTHOUSE Privacy Policy. We collect almost nothing — all audit processing happens in your browser. No agent traces, no analytics, no third-party data sharing."
+        canonical="/privacy"
+        breadcrumbs={[{ name: 'Privacy Policy', url: '/privacy' }]}
+      />
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -76,7 +83,7 @@ export default function Privacy() {
           >
             Privacy <span className="text-acid">Policy</span>
           </h1>
-          <p className="text-sm text-fog mb-12">Last updated: July 2026</p>
+          <p className="text-sm text-fog mb-12">Last updated: August 2026</p>
 
           <div className="space-y-10">
             {SECTIONS.map((section, i) => (

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && cp dist/index.html dist/404.html && for route in about how-to pricing privacy terms cookies login dashboard; do mkdir -p \"dist/$route\" && cp dist/index.html \"dist/$route/index.html\"; done",
+    "build": "tsc && vite build && cp dist/index.html dist/404.html && for route in about how-to pricing privacy terms cookies login dashboard blog; do mkdir -p \"dist/$route\" && cp dist/index.html \"dist/$route/index.html\"; done && mkdir -p dist/blog/how-to-reduce-llm-costs-by-80-percent dist/blog/ai-agent-latency-optimization-guide dist/blog/opentelemetry-for-ai-agents && cp dist/index.html dist/blog/how-to-reduce-llm-costs-by-80-percent/index.html && cp dist/index.html dist/blog/ai-agent-latency-optimization-guide/index.html && cp dist/index.html dist/blog/opentelemetry-for-ai-agents/index.html",
     "preview": "vite preview",
     "deploy": "pnpm run build && gh-pages -d dist"
   },
@@ -13,6 +13,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
+    "react-helmet-async": "^2.0.5",
     "framer-motion": "^11.3.28",
     "lucide-react": "^0.441.0",
     "clsx": "^2.1.1",

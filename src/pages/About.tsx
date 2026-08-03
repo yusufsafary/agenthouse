@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, GitBranch, Layers, Zap } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const TECH = [
   { name: 'React 18', role: 'UI framework' },
@@ -29,9 +30,29 @@ const PRINCIPLES = [
   },
 ]
 
+const ABOUT_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AGENTHOUSE',
+  url: 'https://agenthouse.fun',
+  description:
+    'AGENTHOUSE is an open-source AI agent audit platform that helps developers identify cost overruns, latency bottlenecks, and reliability issues in their LLM-powered agents.',
+  foundingDate: '2026',
+  license: 'https://opensource.org/licenses/MIT',
+  sameAs: ['https://github.com/yusufsafary/agenthouse'],
+}
+
 export default function About() {
   return (
     <main>
+      <SEO
+        title="About AGENTHOUSE — The Open-Source AI Agent Profiler"
+        description="AGENTHOUSE is an open-source AI agent profiler. Built for developers who ship agents to production — audit traces, cut LLM costs, and eliminate failure modes. Zero backend, MIT licensed."
+        canonical="/about"
+        structuredData={ABOUT_SCHEMA}
+        breadcrumbs={[{ name: 'About', url: '/about' }]}
+      />
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -73,7 +94,7 @@ export default function About() {
           <p className="section-label mb-8">Principles</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {PRINCIPLES.map((p, i) => (
-              <motion.div
+              <motion.article
                 key={p.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +105,7 @@ export default function About() {
                 <div className="mb-4">{p.icon}</div>
                 <h3 className="text-lg font-bold text-white mb-3">{p.title}</h3>
                 <p className="text-sm text-fog leading-relaxed">{p.body}</p>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -92,9 +113,9 @@ export default function About() {
         {/* Tech stack */}
         <div className="mt-20">
           <p className="section-label mb-8">Tech Stack</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 max-w-3xl">
             {TECH.map(t => (
-              <div key={t.name} className="bg-ash border border-steel p-4 text-center">
+              <div key={t.name} className="border border-steel bg-ash p-4 text-center">
                 <p className="text-sm font-bold text-white">{t.name}</p>
                 <p className="text-xs text-fog mt-1">{t.role}</p>
               </div>
@@ -102,36 +123,15 @@ export default function About() {
           </div>
         </div>
 
-        {/* Scoring methodology */}
-        <div className="mt-20 max-w-3xl">
-          <p className="section-label mb-4">Scoring Methodology</p>
-          <h2 className="text-3xl font-bold tracking-tightest mb-6">How the score is calculated</h2>
-          <p className="text-mist leading-relaxed mb-6">
-            AGENTHOUSE runs 5 built-in audits across four categories. Each audit produces a 0-1 score and a list of findings. Category scores are weighted averages of their constituent audits; the overall score is a weighted average of category scores.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-            {[
-              { cat: 'Cost', w: '30%', color: '#FFE500' },
-              { cat: 'Latency', w: '30%', color: '#00FF66' },
-              { cat: 'Reliability', w: '20%', color: '#FF2D55' },
-              { cat: 'Context', w: '20%', color: '#AB9FF2' },
-            ].map(c => (
-              <div key={c.cat} className="bg-ash border border-steel p-4 text-center" style={{ borderTopColor: c.color, borderTopWidth: 2 }}>
-                <p className="text-lg font-bold" style={{ color: c.color }}>{c.w}</p>
-                <p className="text-xs text-fog uppercase tracking-wider mt-1">{c.cat}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-fog leading-relaxed">
-            Scores of 90+ are green, 70-89 yellow, 50-69 orange, and below 50 red. A perfect 100 means the agent passed all audits with no findings.
-          </p>
-        </div>
-
         {/* CTA */}
         <div className="mt-20 pt-12 border-t border-steel">
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <Link to="/login" className="btn-acid">
-              Try AGENTHOUSE
+              Start Auditing Free
+              <ArrowRight size={14} />
+            </Link>
+            <Link to="/how-to" className="btn-outline">
+              How It Works
               <ArrowRight size={14} />
             </Link>
           </div>
