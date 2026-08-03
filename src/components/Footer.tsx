@@ -33,7 +33,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-5">
               <a
-                href="https://twitter.com/agenthouse"
+                href="https://x.com/agenthouseapp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 border border-steel text-fog hover:border-acid hover:text-acid transition-colors"
